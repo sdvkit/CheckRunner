@@ -1,0 +1,20 @@
+
+========================================
+              CASH RECEIPT
+            SUPERMARKET 1234
+       12. MILKYWAY Galaxy/ Earth
+            Tel: 123-456-789
+
+     Cashier: Ivanov DATE:2022-12-17
+                     TIME:11:49:07
+----------------------------------------
+ QTY       DESCRIPTION   PRICE   TOTAL
+   1            pencil    0,32    0,32
+   2               pen    0,35    0,70
+   3             ruler    0,32    0,96
+----------------------------------------
+ PRODUCT DISCOUNT:                0,00
+ DISCOUNT CARD:                   0,20
+
+ TOTAL:                           1,78
+========================================

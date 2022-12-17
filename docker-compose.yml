@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  app:
+    image: 'check-runner:latest'
+    build:
+      context: .
+    ports:
+      - "8080:8080"
+    container_name: check-runner-app
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/check-runner
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root-roottoor
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=none
+
+  db:
+    image: 'postgres:latest'
+    container_name: check-runner-db
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root-roottoor
+      - POSTGRES_DB=check-runner
