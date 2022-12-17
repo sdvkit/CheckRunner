@@ -2,7 +2,7 @@ package com.sdv.kit.checkrunner.controller;
 
 import com.sdv.kit.checkrunner.mapper.CheckMapper;
 import com.sdv.kit.checkrunner.model.Check;
-import com.sdv.kit.checkrunner.service.impl.CheckServiceImpl;
+import com.sdv.kit.checkrunner.service.CheckService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -19,7 +19,7 @@ import java.util.List;
 @RequestMapping("/api/v1/")
 public class CheckRestController {
 
-    private final CheckServiceImpl checkService;
+    private final CheckService checkService;
     private final CheckMapper checkMapper;
 
     @GetMapping(value = "/check/text", produces = MediaType.TEXT_MARKDOWN_VALUE)
