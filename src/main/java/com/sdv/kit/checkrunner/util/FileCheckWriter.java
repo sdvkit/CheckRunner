@@ -25,7 +25,7 @@ public class FileCheckWriter implements CheckWriter{
         try(FileWriter fileWriter = new FileWriter("check.txt")) {
             consoleCheckWriter.write(check);
             fileWriter.write(checkMapper.fromCheckToString(check));
-            log.info("Check was successfully written to file 'check.txt'.");
+            log.info("Check was successfully written to the file 'check.txt'.");
         } catch (IOException e) {
             e.printStackTrace();
         }
