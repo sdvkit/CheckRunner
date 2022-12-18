@@ -105,7 +105,7 @@ GET  http://localhost:8080/api/v1/check/json?items=1-2,3-4,5-6&card=1234
 #### Ответ:
 ```json
 {
-  "dateTime": "2022-12-18T15:30:37.126156",
+  "dateTime": "2022-12-18T22:24:28.324718",
   "products": {
     "Product(id=1, name=pencil, price=0.32, discount=true)": 2,
     "Product(id=3, name=ruler, price=0.32, discount=true)": 4,
@@ -116,7 +116,7 @@ GET  http://localhost:8080/api/v1/check/json?items=1-2,3-4,5-6&card=1234
     "number": 1234,
     "percent": 10
   },
-  "totalPrice": 16.5,
+  "totalPrice": 13.392,
   "productDiscount": 1.4580001,
   "discountCardPrice": 1.65
 }
