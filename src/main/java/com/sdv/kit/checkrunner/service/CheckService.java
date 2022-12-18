@@ -7,4 +7,5 @@ import java.util.List;
 public interface CheckService {
     Check build(String[] args);
     Check build(List<String> items, Long discountCardNumber);
+    Check getPricedCheck(Check check);
 }

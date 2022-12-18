@@ -35,7 +35,7 @@ class CheckRestControllerTests {
     @SneakyThrows
     @Test
     void getCheckTest() {
-        Check check = new Check(LocalDateTime.now(), Collections.emptyMap(), null);
+        Check check = new Check(LocalDateTime.now(), Collections.emptyMap(), null, 0f, 0f, 0f);
         when(checkService.build(any(), any())).thenReturn(check);
         mockMvc.perform(get("/api/v1/check/text?items=1-2")
                         .contentType(MediaType.TEXT_MARKDOWN_VALUE))
@@ -46,7 +46,7 @@ class CheckRestControllerTests {
     @SneakyThrows
     @Test
     void getJsonCheckTest() {
-        Check check = new Check(LocalDateTime.now(), Collections.emptyMap(), null);
+        Check check = new Check(LocalDateTime.now(), Collections.emptyMap(), null, 0f, 0f, 0f);
         when(checkService.build(any(), any())).thenReturn(check);
         mockMvc.perform(get("/api/v1/check/json?items=1-2")
                         .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)

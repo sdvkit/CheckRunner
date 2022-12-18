@@ -45,6 +45,7 @@ public class CheckServiceImplTests {
 
         assertEquals(1, check.getProducts().size());
         assertEquals(10, check.getDiscountCard().getPercent());
+        assertEquals(20f, check.getTotalPrice());
     }
 
     @Test
@@ -55,5 +56,6 @@ public class CheckServiceImplTests {
 
         assertEquals(1, check.getProducts().size());
         assertEquals(10, check.getDiscountCard().getPercent());
+        assertEquals(20f, check.getTotalPrice());
     }
 }

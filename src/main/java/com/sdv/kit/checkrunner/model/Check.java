@@ -19,4 +19,10 @@ public class Check {
     @Builder.Default
     private Map<Product, Integer> products = new HashMap<>();
     private DiscountCard discountCard;
+    @Builder.Default
+    private Float totalPrice = 0f;
+    @Builder.Default
+    private Float productDiscount = 0f;
+    @Builder.Default
+    private Float discountCardPrice = 0f;
 }

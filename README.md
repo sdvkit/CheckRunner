@@ -53,7 +53,7 @@ docker-compose up
 FROM openjdk:17-jdk-slim
 MAINTAINER nikitasudaev
 COPY build/libs/CheckRunner.jar CheckRunner.jar
-ENTRYPOINT ["java","-jar","/CheckRunner.jar", "1-2", "3-5", "5-6"]
+ENTRYPOINT ["java","-jar","/CheckRunner.jar", "1-2", "3-5", "5-6", "card-1234"]
 ```
 
 # Эндпоинты
@@ -66,38 +66,59 @@ ENTRYPOINT ["java","-jar","/CheckRunner.jar", "1-2", "3-5", "5-6"]
 
 ### Получить чек в формате text/markdown
 
-#### Запрос:
+#### Запрос (параметры могут быть другими):
 ```
-GET  /api/v1/chek/text 
+GET  http://localhost:8080/api/v1/check/text?items=1-2,3-4,5-6&card=1234
 ```
 
-#### Ответ (значения могут быть другими):
+#### Ответ:
 ```
-string
+========================================
+              CASH RECEIPT
+            SUPERMARKET 1234
+       12. MILKYWAY Galaxy/ Earth
+            Tel: 123-456-789
+
+     Cashier: Ivanov DATE:2022-12-18
+                     TIME:14:45:21
+----------------------------------------
+ QTY       DESCRIPTION   PRICE   TOTAL
+   2            pencil    0,32    0,64
+   4             ruler    0,32    1,28
+   6          backpack    2,43   14,58
+----------------------------------------
+ PRODUCT DISCOUNT:                1,46
+ DISCOUNT CARD:                   1,65
+
+ TOTAL:                          13,39
+========================================
 ```
 <hr>
 
 ### Получить чек в формате json
 
-#### Запрос:
+#### Запрос (параметры могут быть другими):
 ```
-GET  /api/v1/chek/json 
+GET  http://localhost:8080/api/v1/check/json?items=1-2,3-4,5-6&card=1234
 ```
 
-#### Ответ (значения могут быть другими):
-```
+#### Ответ:
+```json
 {
-  "dateTime": "2022-12-17T07:44:14.786Z",
+  "dateTime": "2022-12-18T15:30:37.126156",
   "products": {
-    "additionalProp1": 0,
-    "additionalProp2": 0,
-    "additionalProp3": 0
+    "Product(id=1, name=pencil, price=0.32, discount=true)": 2,
+    "Product(id=3, name=ruler, price=0.32, discount=true)": 4,
+    "Product(id=5, name=backpack, price=2.43, discount=true)": 6
   },
   "discountCard": {
-    "id": 0,
-    "number": 0,
-    "percent": 0
-  }
+    "id": 1,
+    "number": 1234,
+    "percent": 10
+  },
+  "totalPrice": 16.5,
+  "productDiscount": 1.4580001,
+  "discountCardPrice": 1.65
 }
 ```
 <hr>

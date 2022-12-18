@@ -48,11 +48,13 @@ public class CheckServiceImpl implements CheckService {
             }
         }
 
-        return Check.builder()
+        Check check = Check.builder()
                 .dateTime(LocalDateTime.now())
                 .discountCard(discountCard)
                 .products(products)
                 .build();
+
+        return getPricedCheck(check);
     }
 
     /**
@@ -73,10 +75,25 @@ public class CheckServiceImpl implements CheckService {
             products.put(product, Integer.parseInt(separatedArg[1]));
         });
 
-        return Check.builder()
+        Check check = Check.builder()
                 .dateTime(LocalDateTime.now())
                 .discountCard(discountCard)
                 .products(products)
                 .build();
+
+        return getPricedCheck(check);
+    }
+
+    @Override
+    public Check getPricedCheck(Check check) {
+        check.getProducts().forEach((product, count) -> {
+            check.setTotalPrice(check.getTotalPrice() + product.getPrice() * count);
+            check.setProductDiscount(check.getProductDiscount() + ((count > 5)
+                    ? (product.getPrice() * count * 0.1f) : 0));
+        });
+        check.setDiscountCardPrice((check.getDiscountCard() != null)
+                ? (check.getTotalPrice() * check.getDiscountCard().getPercent()) / 100 : 0f);
+
+        return check;
     }
 }
