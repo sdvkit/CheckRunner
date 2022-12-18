@@ -36,7 +36,7 @@ public class BasicCheckMapper implements CheckMapper{
         checkBody.append(String.format("-".repeat(40) + "\n PRODUCT DISCOUNT: %19.2f\n DISCOUNT CARD: %22.2f\n\n TOTAL: %30.2f\n" + "=".repeat(40),
                 check.getProductDiscount(),
                 check.getDiscountCardPrice(),
-                check.getTotalPrice() - check.getProductDiscount() - check.getDiscountCardPrice()
+                check.getTotalPrice()
         ));
 
         return checkBody.toString();

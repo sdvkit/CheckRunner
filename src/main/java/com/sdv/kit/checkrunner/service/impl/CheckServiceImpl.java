@@ -93,7 +93,7 @@ public class CheckServiceImpl implements CheckService {
         });
         check.setDiscountCardPrice((check.getDiscountCard() != null)
                 ? (check.getTotalPrice() * check.getDiscountCard().getPercent()) / 100 : 0f);
-
+        check.setTotalPrice(check.getTotalPrice()  - check.getProductDiscount() - check.getDiscountCardPrice());
         return check;
     }
 }
